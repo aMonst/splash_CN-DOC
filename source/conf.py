@@ -146,7 +146,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'splash.tex', 'splash中文文档 Documentation',
+    (master_doc, 'splash.tex', u'splash中文文档 Documentation',
      'masimaro', 'manual'),
 ]
 
