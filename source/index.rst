@@ -30,3 +30,4 @@ Splash 的部分特征:
    :maxdepth: 2
 
    Installation
+   api
