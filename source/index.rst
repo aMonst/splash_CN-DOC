@@ -31,3 +31,4 @@ Splash 的部分特征:
 
    Installation
    api
+   scripting-tutorial
