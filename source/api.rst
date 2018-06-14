@@ -1,3 +1,5 @@
+.. _splash-http-api:
+
 Splash HTTP API
 ======================================================
 请先参阅 `安装 <./Installation.html>`_ 部分的内容安装 ，然后启动Splash
@@ -34,7 +36,7 @@ render.html
 **timeout : float : optional**
     渲染的超时值，以秒为单位(默认为30s)
 
-    默认情况下，允许的最大超时值为90s，您也可以在启动时通过 ``--wait-timeout``参数来修改这个值，比如使用这个命令来使默认最大超时时间为5分钟
+    默认情况下，允许的最大超时值为90s，您也可以在启动时通过 ``--wait-timeout`` 参数来修改这个值，比如使用这个命令来使默认最大超时时间为5分钟
     ::
 
         $ docker run -it -p 8050:8050 scrapinghub/splash --max-timeout 300
@@ -118,9 +120,10 @@ render.html
     传出的Splash包的请求方法 [#5]_ ，默认的方法是GET，当然Splash也支持POST。
 
 **save_args : JSON 数据或者是一个以分号为分隔符的字符串 : optional**
-    这是一个放入缓存中的参数名称列表，Splash将会把列表中对应的参数值放入到内部缓冲中，并通过Splash响应头的 ``X-Splash-Saved-Arguments``参数
+    这是一个放入缓存中的参数名称列表，Splash将会把列表中对应的参数值放入到内部缓冲中，并通过Splash响应头的 ``X-Splash-Saved-Arguments`` 参数
     中进行返回，该参数会将对应值以SHA1列表的方式返回。这个返回值是一个以分号分隔的字符串，每个部分以键 = 哈希值 这种方式展现
     ::
+
         name1=9a6747fc6259aa374ab4e1bb03074b6ec672cf99;name2=ba001160ef96fe2a3f938fea9e6762e204a562b3
 
     在客户端中可以使用 `load_args <#arg-load-args>`_  参数将响应包头部的对应哈希值转化为真实的参数值。当参数值较长而且不变的情况下使用这种方式将会是一个很好的选择
@@ -314,6 +317,7 @@ render.json
 
 通过添加 iframes=1，能够在返回中得到对应的frame的信息
 ::
+
     {
         "geometry": [0, 0, 640, 480],
         "frameName": "",
@@ -441,7 +445,7 @@ render.html, render.png, render.jpeg, render.har 和 render.json已经涵盖了�
 
 run
 ------------------------------------------
-这个端点与execute具有相同的功能，但是它会自动将 ``lua_source``包装在 ``function main(splash, args) ... end``结构中
+这个端点与execute具有相同的功能，但是它会自动将 ``lua_source`` 包装在 ``function main(splash, args) ... end`` 结构中
 比如您在execute 端点中传入脚本::
 
     function main(splash, args)
@@ -589,7 +593,7 @@ splash不能支持所有的Adblock Plus过滤规则，它有一些对应的限�
 
 - 元素隐藏规则不受支持；过滤器可以过滤掉某些网络请求，但是并不能隐藏已加载页面的内容
 
-- 只支持 ``domain``选项
+- 只支持 ``domain`` 选项
 
 splash不支持的规则会被默默的丢弃
 
