@@ -36,7 +36,7 @@ splash 能够执行用户使用Lua语言编写的自定义渲染脚本，这就�
 
     为了执行在您的编程环境中执行脚本，您需要弄清楚如何发送HTTP请求，您可以在问答模块中参考 如何向Splash API发送HTTP请求，
     它包含了一些常见的方法和步骤(比如，使用Python + requests库)
-.. entry-point-the-main-function:
+.. _entry-point-the-main-function:
 
 入口点——main函数
 --------------------------------------------------
@@ -73,7 +73,7 @@ main函数接收一个对象，该对象允许我们向操作浏览器选项卡�
         return "ok"
     end
 
-.. where-are-my-callbacks:
+.. _where-are-my-callbacks:
 
 我们的回调在哪?
 ---------------------------------
