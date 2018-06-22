@@ -119,6 +119,8 @@ render.html
 **http_method : string : optional**
     传出的Splash包的请求方法 [#5]_ ，默认的方法是GET，当然Splash也支持POST。
 
+.. _save-args:
+
 **save_args : JSON 数据或者是一个以分号为分隔符的字符串 : optional**
     这是一个放入缓存中的参数名称列表，Splash将会把列表中对应的参数值放入到内部缓冲中，并通过Splash响应头的 ``X-Splash-Saved-Arguments`` 参数
     中进行返回，该参数会将对应值以SHA1列表的方式返回。这个返回值是一个以分号分隔的字符串，每个部分以键 = 哈希值 这种方式展现
@@ -128,6 +130,8 @@ render.html
 
     在客户端中可以使用 `load_args <#arg-load-args>`_  参数将响应包头部的对应哈希值转化为真实的参数值。当参数值较长而且不变的情况下使用这种方式将会是一个很好的选择
     （特别是在表示js_source和lua_source的时候）
+
+.. _load-args:
 
 load_args : JSON 对象或者是一个字符串 : optional
     将参数值从缓存中加载出来，load_args 参数值必须是 ``{"name": "<SHA1 hash>", ...}``格式的json对象或者是响应包头
@@ -143,13 +147,15 @@ load_args : JSON 对象或者是一个字符串 : optional
     splash使用LUR缓存来存储这些值, 在存储时限定了参数的条目数量，并且在每次重启Splash之后都会清理缓存，换句话说，Splash中的缓存不是持久性的
     客户端应该要有重发这些参数的操作
 
+.. _arg-html5-media:
+
 **html5_media : integer : optional**
     是否支持H5中的多媒体（比如<video> 标签）。使用1表示支持，0表示不支持，默认为0
 
     Splash默认是不支持H5 多媒体的，它可能会造成程序的不稳定。在未来的版本中可能会默认支持H5，所以在那以后如果不需要使用H5，
     那么请将参数设置为0 ``html5_media = 0``
 
-    更多信息请参阅 splash.html5_media_enabled.
+    更多信息请参阅 :ref:`splash.html5_media_enabled <./scripting-ref.html#splash-html5-media-enabled>`.
 
 示例
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
