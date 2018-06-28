@@ -155,7 +155,7 @@ load_args : JSON 对象或者是一个字符串 : optional
     Splash默认是不支持H5 多媒体的，它可能会造成程序的不稳定。在未来的版本中可能会默认支持H5，所以在那以后如果不需要使用H5，
     那么请将参数设置为0 ``html5_media = 0``
 
-    更多信息请参阅 :ref:`splash.html5_media_enabled <./scripting-ref.html#splash-html5-media-enabled>`.
+    更多信息请参阅 `splash.html5_media_enabled <./scripting-ref.html#splash-html5-media-enabled>`_ .
 
 示例
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

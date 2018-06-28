@@ -210,7 +210,7 @@ splash 则采用标准的LUA语言
     PhantomJS 和它对应的封装都很棒，很值得敬佩，不要因为上面的内容而抨击它们，它们比splash更加成熟，功能也更加完善
     splash尝试从另一个角度来看待问题，但是每一个独立的splash 功能都有一个独特的PhantomJS 功能与之对应
 
-您想了解更多关于Splash Lua API的功能请参考 `Splash Lua API 概览 <>`_
+您想了解更多关于Splash Lua API的功能请参考 `Splash Lua API 概览 <./scripting-overview.html#splash-lua-api-overview>`_
 
 .. _living-without-callbacks:
 
@@ -232,7 +232,7 @@ API被设计成了同一时间内只执行单行代码。这些都意味着代�
 这通常是调用这些方法的要点，``splash:wait(time)`` 或者 ``splash:go(url)`` 这些函数只在这点上有意义，因为执行它们之后，web页面就被更改了。 [#2]_
 您需要谨记这点
 
-这里面有许多异步函数，像: `splash:go <>`_ , `splash:wait <>`_ , `splash:wait_for_resume <>`_ 。
+这里面有许多异步函数，像: `splash:go <./scripting-ref.html#splash-go>`_ , `splash:wait <./scripting-ref.html#splash-wait>`_ , `splash:wait_for_resume <./scripting-ref.html#splash-wait-for-resume>`_ 。
 虽然大多数的splash 函数都不是异步方式工作的，但是您将它们想象成异步的将使您的代码在未来它们被变成异步方式时也能正常工作
 
 .. _calling-splash-methods:
@@ -260,7 +260,7 @@ API被设计成了同一时间内只执行单行代码。这些都意味着代�
     splash:wait{0.5, cancel_on_redirect=false}
 
 
-为了方便，所有的splash API都被设计成接受这调用两种方式。但是针对在lua中大多数函数 `没有参数名称的`_
+为了方便，所有的splash API都被设计成接受这调用两种方式。但是针对在lua中大多数函数都是 `没有参数参数名称的Lua 函数 <http://www.lua.org/pil/5.3.html>`_
 这样的一种情况(包括大部分从标准库中导出的函数),只能选择使用按参数顺序传参
 
 .. _error-handling:

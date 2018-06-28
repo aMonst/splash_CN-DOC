@@ -33,3 +33,4 @@ Splash 的部分特征:
    api
    scripting-tutorial
    scripting-overview
+   scripting-ref
