@@ -75,6 +75,7 @@ splash.resource_timeout
 第二次设定网络请求的超时值
 
 **原型:** ``splash.resource_timeout = number``
+
 例如，下面的例子演示了当请求远端的资源超过10s时异常告警
 ::
 
@@ -120,7 +121,7 @@ splash.plugins_enabled
 ##############################################
 允许或者禁止浏览器插件(例如 Falsh)
 
-**原型:** splash.plugins_enabled = true/false
+**原型:** ``splash.plugins_enabled = true/false``
 
 默认情况下插件是被禁止的
 
@@ -130,7 +131,7 @@ splash.response_body_enabled
 ##############################################
 启用或者禁止响应内容追踪
 
-**原型:** splash.response_body_enabled = true/false
+**原型:** ``splash.response_body_enabled = true/false``
 
 从效率上考虑，默认情况下Splash不会在内存中保存每个请求的响应内容。这就意味着在函数 :ref:`splash:on_response <splash-on-response>`
 的回调函数中，我们无法获取到 `response.body <./scripting-response-object.html#splash-response-body>`_ 属性，同时也无法从
@@ -292,7 +293,7 @@ splash:wait
 #######################################################
 等待对应的时间(单位为秒),使程序等待WebKit 对网页进行进一步的处理
 
-**原型:** ok, reason = splash:wait{time, cancel_on_redirect=false, cancel_on_error=true}
+**原型:** ``ok, reason = splash:wait{time, cancel_on_redirect=false, cancel_on_error=true}``
 
 **参数:**
 

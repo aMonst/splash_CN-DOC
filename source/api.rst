@@ -134,7 +134,7 @@ render.html
 .. _load-args:
 
 load_args : JSON 对象或者是一个字符串 : optional
-    将参数值从缓存中加载出来，load_args 参数值必须是 ``{"name": "<SHA1 hash>", ...}``格式的json对象或者是响应包头
+    将参数值从缓存中加载出来，load_args 参数值必须是 ``{"name": "<SHA1 hash>", ...}`` 格式的json对象或者是响应包头
     的 ``X-Splash-Saved-Arguments`` 参数所对应的原始字符(以分号分隔的 name=hash 格式的字符串)
 
     针对每个存在在load_args 中的参数，Splash在取出对应的值的时候会使用hash值作为键值，从缓存中查找出对应的真实数据，如果对应的hash值在缓存中
@@ -192,7 +192,7 @@ render.png
         这种情况下整个渲染变得可靠
 
 **scale_method : string : optional**
-    可能的值有 ``raster``(默认值) 和 ``vector``, 如果值为 raster, 通过宽度执行的缩放操作是逐像素的，如果值为vector, 在缩放是是按照
+    可能的值有 ``raster`` (默认值) 和 ``vector``, 如果值为 raster, 通过宽度执行的缩放操作是逐像素的，如果值为vector, 在缩放是是按照
     元素在进行的 [#6]_
 
     .. note::
@@ -562,7 +562,7 @@ splash允许通过 `Adblock Plus <https://adblockplus.org/>`_ 规则来对请求
 .. note::
     可以参阅 splash 版本
 
-``filters-path`` 所指向的目录中必须包含以 Adblock Plus 格式编写的规则的``.txt``文件
+``filters-path`` 所指向的目录中必须包含以 Adblock Plus 格式编写的规则的 ``.txt`` 文件
 您可以从 `EasyList <https://easylist.adblockplus.org/en/>`_ 的网站下载文件 ``easylist.txt`` 文件放到对应目录中，或者创建一个 ``.txt`` 文件编写自己的规则
 例如，让我们创建一个过滤器，以阻止加载的ttf和woff格式的自定义字体（在Mac OS 中，可能会由于qt的bug导致splash产生一个段错误）
 ::
