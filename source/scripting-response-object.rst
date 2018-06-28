@@ -1,4 +1,6 @@
-Response 对象
+.. _response-objects:
+
+响应对象
 =============================================
 
 Respons Object 作为某些 Splash 方法执行的结果被返回(像 `splash:http_get <./scripting-ref.html#splash-http-get>`_

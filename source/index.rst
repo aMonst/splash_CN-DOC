@@ -35,3 +35,4 @@ Splash 的部分特征:
    scripting-overview
    scripting-ref
    scripting-response-object
+   scripting-request-object
