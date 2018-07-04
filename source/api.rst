@@ -18,20 +18,14 @@ render.html
 返回一个经过Javascript渲染之后的页面的HTML代码
 参数：
 
-.. _url:
-
 **url: string: required** [#2]_
     需要进行渲染的页面的url，这个参数必须提供
-
-.. _baseurl:
 
 **baseurl : string : optional**
     用于呈现页面的基础URL
 
     基本HTML内容将从url参数中提供的URL中获取，而用于呈现页面的HTML文本中的相对引用资源是使用baseurl参数中给定的URL作为基础获取的 [#3]_ 。
     您可以在这个讨论中获取更多信息: render.html 返回好像被浏览器给破坏了
-
-.. _timeout:
 
 **timeout : float : optional**
     渲染的超时值，以秒为单位(默认为30s)
@@ -41,22 +35,16 @@ render.html
 
         $ docker run -it -p 8050:8050 scrapinghub/splash --max-timeout 300
 
-.. _resource-timeout:
-
 **resource_timeout : float : optional**
     单个网络请求的超时时间
 
     更多信息请查看：splash:on_request 的 ``request:set_timeout(timeout)`` 方法 和 splash.resource_timeout属性
-
-.. _wait:
 
 **wait : float : optional**
     当收到响应包后等待的时长，单位为s默认为0，如果您所请求的页面中包含一些异步与延时加载的JavaScript脚本时请添加上这个值，
     当等待时间为0时这些JavaScript代码不会执行。当你想要获取整个页面的PNG和JPEG图片的话，最好也加上此值（请查看 :ref:`render_all <render-all>` ）
 
     这个等待值必须小于timeout这个超时值 [#4]_
-
-.. _proxy:
 
 **proxy : string : optional**
     指定代理配置文件的名称，或者代理url。参阅代理配置
@@ -65,32 +53,20 @@ render.html
 
     其中protocol 为 http或者socks5,如果未指定端口，将会默认采用1080 端口
 
-.. _js:
-
 **js : string : optional**
     JavaScript配置文件名称，请参阅JavaScript配置
-
-.. _js-source:
 
 **js_source : string : optional**
     可被页面环境执行的JavaScript代码。请参阅：使用页面环境执行JavaScript代码
 
-.. _filters:
-
 **filters : string : optional**
     使用分号分隔的请求过滤的名称列表，请参阅请求包过滤
-
-.. _allowed-domains:
 
 **allowed_domains : string : optional**
     使用分号分隔的允许访问的域名列表。如果该值存在，Splash将不会加载任何来自不在此列表中的域以及不在此列表中的域的子域的任何内容。
 
-.. _allowed-comtent-types:
-
 **allowed_content_types : string : optional**
     使用分号分隔的允许内容类型列表。当该值存在时，如果请求包对应的响应包类型不在列表中那么该请求包将会被拒绝。允许内容的通配符使用 `fnmatch <https://docs.python.org/3/library/fnmatch.html>`_ 语法
-
-.. _forbidden_content_types:
 
 **forbidden_content_types**
     使用分号分隔的拒绝内容类型列表。当该值存在时，如果请求包对应的响应包类型在列表中那么该请求包将会被拒绝。允许内容的通配符使用 `fnmatch <https://docs.python.org/3/library/fnmatch.html>`_ 语法
@@ -101,6 +77,7 @@ render.html
     这个值在生成PNG和JPEG的情况下十分重要，所有渲染端点都支持这个参数，因为JavaScript代码的执行以视口大小为依据
 
     出于向后兼容的考虑，它允许使用full为值 ``viewport=full`` 它的效果与使用 ``render_all=1`` 相同(请参阅: render_all)
+
 **images : integer : optional**
     是否加载图片，当值为1时表示允许加载图片，为0时表示禁止加载
 
@@ -119,8 +96,6 @@ render.html
 **http_method : string : optional**
     传出的Splash包的请求方法 [#5]_ ，默认的方法是GET，当然Splash也支持POST。
 
-.. _save-args:
-
 **save_args : JSON 数据或者是一个以分号为分隔符的字符串 : optional**
     这是一个放入缓存中的参数名称列表，Splash将会把列表中对应的参数值放入到内部缓冲中，并通过Splash响应头的 ``X-Splash-Saved-Arguments`` 参数
     中进行返回，该参数会将对应值以SHA1列表的方式返回。这个返回值是一个以分号分隔的字符串，每个部分以键 = 哈希值 这种方式展现
@@ -130,8 +105,6 @@ render.html
 
     在客户端中可以使用 `load_args <#arg-load-args>`_  参数将响应包头部的对应哈希值转化为真实的参数值。当参数值较长而且不变的情况下使用这种方式将会是一个很好的选择
     （特别是在表示js_source和lua_source的时候）
-
-.. _load-args:
 
 load_args : JSON 对象或者是一个字符串 : optional
     将参数值从缓存中加载出来，load_args 参数值必须是 ``{"name": "<SHA1 hash>", ...}`` 格式的json对象或者是响应包头
@@ -147,8 +120,6 @@ load_args : JSON 对象或者是一个字符串 : optional
     splash使用LUR缓存来存储这些值, 在存储时限定了参数的条目数量，并且在每次重启Splash之后都会清理缓存，换句话说，Splash中的缓存不是持久性的
     客户端应该要有重发这些参数的操作
 
-.. _arg-html5-media:
-
 **html5_media : integer : optional**
     是否支持H5中的多媒体（比如<video> 标签）。使用1表示支持，0表示不支持，默认为0
 
@@ -156,6 +127,8 @@ load_args : JSON 对象或者是一个字符串 : optional
     那么请将参数设置为0 ``html5_media = 0``
 
     更多信息请参阅 `splash.html5_media_enabled <./scripting-ref.html#splash-html5-media-enabled>`_ .
+
+.. _examples:
 
 示例
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -167,6 +140,8 @@ curl 示例 ::
 ::
 
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+.. _render-png:
 
 render.png
 ------------------------------------
@@ -198,6 +173,7 @@ render.png
     .. note::
         基于矢量的重新缩放更加高效，并且会产生更清晰的字体和更锐利的元素边界，但是可能存在渲染问题，请谨慎使用
 
+
 示例
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 curl 示例
@@ -208,6 +184,8 @@ curl 示例
 
     # 将生成图片尺寸设置为:320x240
     curl 'http://localhost:8050/render.png?url=http://domain.com/page-with-javascript.html&width=320&height=240'
+
+.. _render-jpeg:
 
 render.jpeg
 ----------------------------------------------
@@ -234,6 +212,8 @@ curl 示例
     # 生成高质量的图片
     curl 'http://localhost:8050/render.jpeg?url=http://domain.com/&quality=30'
 
+.. _render-har:
+
 render.har
 ---------------------------------------
 以HAR格式返回Splash与目标站点的交互信息，里面包含了请求信息、响应信息、时间信息和头信息等等
@@ -247,6 +227,8 @@ render.har
 
 **response_body : int : optional**
     可选的值有0和1，当值为1时，响应体的信息会被包含在返回的HAR数据中，默认情况下 ``response_body = 0``
+
+.. _render-json:
 
 render.json
 ----------------------------------------
@@ -417,6 +399,8 @@ curl实例
         -d 'function getAd(x){ return x; }; console.log("some log"); console.log("another log"); getAd("abc");' \
         'http://localhost:8050/render.json?url=http://domain.com&script=1&console=1'
 
+.. _execute:
+
 execute
 ------------------------------------------
 执行自定义的渲染脚本并返回对应的结果
@@ -449,6 +433,8 @@ render.html, render.png, render.jpeg, render.har 和 render.json已经涵盖了�
 
 您可以传入任何类型的参数，所有在端点execute中传入的参数在脚本中都可以通过splash.args这个table对象 来访问
 
+.. _run:
+
 run
 ------------------------------------------
 这个端点与execute具有相同的功能，但是它会自动将 ``lua_source`` 包装在 ``function main(splash, args) ... end`` 结构中
@@ -466,6 +452,8 @@ run
     assert(splash:go(args.url))
     assert(splash:wait(1.0))
     return splash:html()
+
+.. _executing-custom-javascript-code-within-page-context:
 
 在页面上下文中执行用户自定义的JavaScript代码
 ----------------------------------------------------------
@@ -498,6 +486,8 @@ curl:
 
 可以通过使用 render.json这个端点，并设置参数 script = 1 来获取js函数在页面上下文执行的结果
 
+.. _javascript-profiles:
+
 JavaScript配置
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Splash允许使用“JavaScript 配置”的方式来预加载JavaScript文件，配置文件中的JavaScript代码将会在页面加载之后执行，但是会在请求中定义的js代码被执行之前
@@ -529,6 +519,8 @@ Splash允许使用“JavaScript 配置”的方式来预加载JavaScript文件�
 
 请注意，这个例子中假设myfunc是在lib1.js中定义的一个JavaScript函数
 
+.. _javascript-security:
+
 Javascript安全
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 如果splash是通过 ``--js-cross-domain-access`` 的方式启动
@@ -548,6 +540,8 @@ Javascript安全
 
 请注意：允许跨源调用JavaScript代码可能会造成一些安全问题，因为启用这些特性可能会泄漏一些敏感信息（例如cookie），
 当禁用跨域安全时某些网站不会被加载，因此这个特性默认是关闭的
+
+.. _request-filters:
 
 请求过滤
 ---------------------------------------------
@@ -613,6 +607,8 @@ splash不支持的规则会被默默的丢弃
 
     您需要确认您未通过PyPI来下载re2的0.2.20（这个版本已经被放弃了）;您应该使用最新版本
 
+.. _proxy-profiles:
+
 代理配置
 ------------------------------------------
 splash 支持代理配置，它允许通过 ``proxy`` 参数来设置每个请求的代理处理规则
@@ -663,8 +659,12 @@ whitelist 和 blacklist是以换行符分隔的正则表达式。如果url命中
 如果存在一个 ``default.ini`` 文件，那么会默认使用这个，即使你没有指定 ``proxy`` 参数，如果您有 ``default.ini`` 但是不想使用它，
 可以将 ``proxy`` 参数的值设置为 ``none``
 
+.. _other-endpoints:
+
 其他端点
 ----------------------------------------
+
+.. _gc:
 
 _gc
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -675,6 +675,8 @@ _gc
 
 它主要运行python的垃圾回收器，并清理webkit的缓存
 
+.. _debug:
+
 _debug
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 可以向端点 ``/_debug`` 发送一个GET请求来获取splash历程的调试信息（RSS的最大使用量、使用的文件描述符的数量、存活的请求、请求队列的长度、
@@ -683,6 +685,7 @@ _debug
 
     curl http://localhost:8050/_debug
 
+.. _ping:
 
 _ping
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

@@ -37,3 +37,5 @@ Splash 的部分特征:
    scripting-response-object
    scripting-request-object
    scripting-element-object
+   scripting-binary-data
+   scripting-libs

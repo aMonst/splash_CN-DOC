@@ -2,6 +2,7 @@
 
 安装
 ========================
+.. _linux-docker:
 
 linux + dockeer
 ---------------------------
@@ -17,6 +18,8 @@ linux + dockeer
 
 #. 现在splash在0.0.0.0这个ip上监听并绑定了端口8050(http) 和5023 (telnet)
 
+.. _os-x-docker:
+
 OS X + Docker
 ---------------------------
 1. 在Mac上安装 `docker <https://www.docker.com/>`_ (请参考:https://docs.docker.com/docker-for-mac/)
@@ -29,6 +32,8 @@ OS X + Docker
     $ sudo docker run -p 8050:8050 -p 5023:5023 scrapinghub/splash
 
 #. 现在splash在0.0.0.0这个ip上监听并绑定了端口8050(http) 和5023 (telnet)
+
+.. _ubuntu-16-04-manual-way:
 
 Ubuntu 16.04(手工安装)
 ---------------------------------------------
@@ -75,6 +80,7 @@ Ubuntu 16.04(手工安装)
 
     docker官方镜像使用的是Ubuntu 16.04；使用这种方式执行与使用Dockerfile执行，这二者命令行的使用方式基本相同，主要的不同点在于前者移除了provision.sh这个比较危险的脚本文件，这个文件中的相关命令也就不再使用了。它们二者都允许将相关内容保存在docker镜像中。从而打破在桌面系统中各种软件的相关依赖 [#1]_
 
+.. _required-python-packages:
 
 依赖的python包
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -93,12 +99,18 @@ Ubuntu 16.04(手工安装)
     lupa >= 1.3
     funcparserlib >= 0.3.6
 
+.. _splash-versions:
+
 Splash 版本
 ---------------------------
 执行命令 ``docker pull scrapinghub/splash`` 将会得到splash的最新的稳定版，执行命令 ``docker pull scrapinghub/splash:master`` 可以获取到最新的开发版。当然，你也可以获取指定的版本比如执行命令 ``docker pull scrapinghub/splash:2.3.3``
 
+.. _customizing-dockerized-splash:
+
 定制docker中的splash [#2]_
 ---------------------------
+
+.. _passing-custom-options:
 
 定制启动
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -109,9 +121,12 @@ Splash 版本
 
 使用 ``--help`` 获取可用的选项，并不是所有的命令都在同一个docker环境中都适用：修改端口可能没有意义（使用命令的方式修改启动端口）。它的路径使用docker容器中的路径 [#3]_
 
+.. _docker-folder-sharing:
+
 共享目录
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-使用docker的 -v参数可以自定义请求包过滤 [#4]_ ，首先在本地的文件系统 [#5]_ 中为请求过滤创建一个文件，然后为它赋对应的权限，以便容器能够访问它.
+使用docker的 -v参数可以 `自定义请求包过滤 <./api.html#request-filters>`_  [#4]_ ，
+首先在本地的文件系统 [#5]_ 中为请求过滤创建一个文件，然后为它赋对应的权限，以便容器能够访问它.
 ::
 
     $ docker run -p 8050:8050 -v <my-filters-dir>:/etc/splash/filters scrapinghub/splash
@@ -119,7 +134,8 @@ Splash 版本
 将 ``<my-filters-dir>`` 替换成你用来进行请求过滤的文件所在的路径
 也可以使用docker容器的Data Volume作为对应的过滤文件，点击 https://docs.docker.com/userguide/dockervolumes/ 查看更多信息
 
-代理和JavaScript的相关设置也可以使用相同的方式
+`代理 <./api.html#proxy-profiles>`_ 和 `JavaScript的相关设置 <./api.html#javascript-profiles>`_
+也可以使用相同的方式
 ::
 
     $ docker run -p 8050:8050 \
@@ -127,7 +143,8 @@ Splash 版本
         -v <my-js-profiles-dir>:/etc/splash/js-profiles \
         scrapinghub/splash
 
-你可以在路径 ``/etc/splash/lua_modules`` 中挂载你自己的模块, 如果使用Lua sandbox（默认）不要忘了在命令参数 ``--lua-sandbox-allowed-modules`` 后列举上安全的模块
+你可以在路径 ``/etc/splash/lua_modules`` 中挂载 `你自己的模块 <./scripting-libs.html#adding-your-own-modules>`_ ,
+如果使用`Lua sandbox <./scripting-tutorial.html#lua-sandbox>`_ （默认）不要忘了在命令参数 ``--lua-sandbox-allowed-modules`` 后列举上安全的模块
 ::
 
     $ docker run -p 8050:8050 \
@@ -138,6 +155,8 @@ Splash 版本
 .. warning::
     在OS X 和 Windows平台上使用共享文件( ``-v`` 选项)还有一些问题(参考链接: https://github.com/docker/docker/issues/4023 ) 如果你在使用时有相关问题，请尝试在该链接中提到的解决方法，或者克隆项目，修改Dockerfile。
 
+.. _building-local-docker-images:
+
 编译本地的Docker镜像
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 可以使用git 的checkout命令检出Splash的 `源代码 <https://github.com/scrapinghub/splash>`_ 然后在Splash的根目录下执行命令来编译本地的Docker镜像
@@ -145,7 +164,7 @@ Splash 版本
 
     $ docker build -t my-local-splash .
 
-使用如下命令编译Splash-Jupyter的Docker 镜像
+使用如下命令编译`Splash-Jupyter <./kernel.html#splash-jupyter>`_ 的Docker 镜像
 ::
 
     $ docker build -t my-local-splash-jupyter -f  dockerfiles/splash-jupyter/Dockerfile .
