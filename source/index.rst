@@ -40,3 +40,4 @@ Splash 的部分特征:
    scripting-binary-data
    scripting-libs
    kernel
+   faq

@@ -120,6 +120,8 @@ load_args : JSON 对象或者是一个字符串 : optional
     splash使用LUR缓存来存储这些值, 在存储时限定了参数的条目数量，并且在每次重启Splash之后都会清理缓存，换句话说，Splash中的缓存不是持久性的
     客户端应该要有重发这些参数的操作
 
+.. _arg-html5-media:
+
 **html5_media : integer : optional**
     是否支持H5中的多媒体（比如<video> 标签）。使用1表示支持，0表示不支持，默认为0
 
