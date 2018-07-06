@@ -39,3 +39,4 @@ Splash 的部分特征:
    scripting-element-object
    scripting-binary-data
    scripting-libs
+   kernel
