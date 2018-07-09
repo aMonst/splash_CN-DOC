@@ -41,3 +41,5 @@ Splash 的部分特征:
    scripting-libs
    kernel
    faq
+   scrapy-splash-toturial
+   at-last
